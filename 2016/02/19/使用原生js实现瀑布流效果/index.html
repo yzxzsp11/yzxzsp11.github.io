@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      使用原生js实现瀑布流效果 | XuHang 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="july hang">
+    
+    
+
+    <meta name="description" content="题外话话说最近博主是常常出去拍片，可是拍出来的片子如果硬生生扔到博客上的话，展示效果肯定会大打折扣。正当博主望着窗外几个拿鞭炮炸汽车的熊孩子时，‘瀑布流’三个字在脑海中闪过。记得是某位大神学长在某次公开课上展示过这么一个效果。于是百度了一下，最终在极客学院上，跟着老师的视屏完成了这么一个效果，期间也是bug无数 &amp;gt;”&amp;lt;|||| 。
+什么是瀑布流？看到标题，你也许听过瀑布流，是的，这是目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用原生js实现瀑布流效果 | XuHang">
+<meta property="og:url" content="http://yoursite.com/2016/02/19/使用原生js实现瀑布流效果/index.html">
+<meta property="og:site_name" content="XuHang">
+<meta property="og:description" content="题外话话说最近博主是常常出去拍片，可是拍出来的片子如果硬生生扔到博客上的话，展示效果肯定会大打折扣。正当博主望着窗外几个拿鞭炮炸汽车的熊孩子时，‘瀑布流’三个字在脑海中闪过。记得是某位大神学长在某次公开课上展示过这么一个效果。于是百度了一下，最终在极客学院上，跟着老师的视屏完成了这么一个效果，期间也是bug无数 &amp;gt;”&amp;lt;|||| 。
+什么是瀑布流？看到标题，你也许听过瀑布流，是的，这是目">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/E0F5E82A-FDFA-421E-BA5A-E1A39125CC03.jpeg">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/js%E7%80%91%E5%B8%83%E6%B5%81%E5%8D%9A%E5%AE%A2">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/js%E7%80%91%E5%B8%83%E6%B5%813.jpeg">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/js%E7%80%91%E5%B8%83%E6%B5%814.jpeg">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/js%E7%80%91%E5%B8%83%E6%B5%816.jpeg">
+<meta property="og:updated_time" content="2016-02-19T02:59:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用原生js实现瀑布流效果 | XuHang">
+<meta name="twitter:description" content="题外话话说最近博主是常常出去拍片，可是拍出来的片子如果硬生生扔到博客上的话，展示效果肯定会大打折扣。正当博主望着窗外几个拿鞭炮炸汽车的熊孩子时，‘瀑布流’三个字在脑海中闪过。记得是某位大神学长在某次公开课上展示过这么一个效果。于是百度了一下，最终在极客学院上，跟着老师的视屏完成了这么一个效果，期间也是bug无数 &amp;gt;”&amp;lt;|||| 。
+什么是瀑布流？看到标题，你也许听过瀑布流，是的，这是目">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css" type="text/css">
+    <link rel="stylesheet" href="/css/highlight.css" type="text/css">
+    <link rel="stylesheet" href="/css/archive.css" type="text/css">
+    <link rel="stylesheet" href="/css/china-social-icon.css" type="text/css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">XuHang</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          岁月静好，妙香暖心。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/yzxzsp11" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon icon-social-facebook'></i>
+         <span class="label">Facebook</span>
+       </a>
+     </li>
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon cs-icon-douban'></i>
+         <span class="label">Douban</span>
+       </a>
+     </li>
+     
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon icon-social-twitter'></i>
+         <span class="label">Twitter</span>
+       </a>
+     </li>
+
+
+  </ul>
+</nav>
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">使用原生js实现瀑布流效果</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-02-19" class="post-meta__date date">2016-02-19</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/javascript/">javascript</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>话说最近博主是常常出去拍片，可是拍出来的片子如果硬生生扔到博客上的话，展示效果肯定会大打折扣。<br>正当博主望着窗外几个拿鞭炮炸汽车的熊孩子时，‘瀑布流’三个字在脑海中闪过。记得是某位大神<br>学长在某次公开课上展示过这么一个效果。于是百度了一下，最终在<a href="http://www.jikexueyuan.com/course/218.html" target="_blank" rel="external">极客学院</a><br>上，跟着老师的视屏完成了这么一个效果，期间也是bug无数 &gt;”&lt;|||| 。</p>
+<h3 id="什么是瀑布流？"><a href="#什么是瀑布流？" class="headerlink" title="什么是瀑布流？"></a>什么是瀑布流？</h3><p>看到标题，你也许听过瀑布流，是的，这是目前各大网站常见的一个效果。比如<a href="http://huaban.com" target="_blank" rel="external">花瓣网</a><br>或者<a href="http://www.meilishuo.com/guang/catalog/" target="_blank" rel="external">美丽说</a>等等，你会发现，如果你的鼠标向下滚动时，<br>这些页面会自动加载新的信息（一般为图像），从而实现了页面页面如‘瀑布般’无穷无尽，<br>永远会有新的东西刷出（可能是自动，也可能是手动），这就是所谓的瀑布流效果。</p>
+<p>这种效果一般用于购物网站，摄影网站较多，这样可以在不打断用户的情况下，让用户不断<br>看到新的内容，有助于提升用户体验。</p>
+<h3 id="如何实现？"><a href="#如何实现？" class="headerlink" title="如何实现？"></a>如何实现？</h3><p>想要实现瀑布流，工具的话，当然是宇宙级开发语言———javascript啦 →__→，当然<br>你使用jquery等等js框架肯定也是可以的。</p>
+<p>目前的话，主要有三种实现方法：</p>
+<ul>
+<li>传统的float布局方法（接下来我使用的就是这种）</li>
+<li>使用css3实现</li>
+<li>使用绝对定位实现</li>
+</ul>
+<p>博主主要演示第一种方法，其他两种可自行百度。</p>
+<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>首先我们必须先知道瀑布流是一个什么样的原理。</p>
+<p>简单的说，比如我现在有很多张图片，把它们扔到页面上是这样的:<br><img src="http://7xr10n.com1.z0.glb.clouddn.com/E0F5E82A-FDFA-421E-BA5A-E1A39125CC03.jpeg" alt="pic"><br>是不是感觉到左边还有很多空白很不舒服？那么，我们需要使用一种规则来重新分布图片，这就是<br>瀑布流插入图片的原理。</p>
+<p>首先我从中随便取四张图片（当然，你取五张、六张也是可以的），就是这样：<br><img src="http://7xr10n.com1.z0.glb.clouddn.com/js%E7%80%91%E5%B8%83%E6%B5%81%E5%8D%9A%E5%AE%A2" alt="pic"></p>
+<p>接下来我要依据瀑布流原理将剩下的图片插入</p>
+<p>先找到已经出现图片中高度最矮的，也就是第四个，将下面一张图片插入，就是这样：<br><img src="http://7xr10n.com1.z0.glb.clouddn.com/js%E7%80%91%E5%B8%83%E6%B5%813.jpeg" alt="pic"><br>然后高度最矮的就变成连第一张，那么下一张就应该茶道第一张后面，就是这样：<br><img src="http://7xr10n.com1.z0.glb.clouddn.com/js%E7%80%91%E5%B8%83%E6%B5%814.jpeg" alt="pic"><br>以此类推，直达图片插入完成，就是一个瀑布流效果，像这样：<br><img src="http://7xr10n.com1.z0.glb.clouddn.com/js%E7%80%91%E5%B8%83%E6%B5%816.jpeg" alt="pic"></p>
+<p>姨？是不是注意到左下角还有一片空白？是图片插完了吗？这是一种可能，不过显然图片数量<br>远远不止这么多。其实是下面的图片还没有插进来，当你鼠标向下滚动时，后面的图片会自动插入<br>,到这里瀑布流的原理也就差不多流，接下来说说代码实现。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>首先来看看基本的布局：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">   &lt;style&gt;</span><br><span class="line">    *&#123;</span><br><span class="line">        margin: 0;</span><br><span class="line">        padding:0;</span><br><span class="line">    &#125;</span><br><span class="line">    .box&#123;</span><br><span class="line">        padding: 5px;</span><br><span class="line">        float: left;</span><br><span class="line">    &#125;</span><br><span class="line">    .img &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    #container&#123;</span><br><span class="line">        position: relative;</span><br><span class="line">    &#125;</span><br><span class="line">    .appendClass&#123;</span><br><span class="line">        width: 250px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        background-color: #f8e530;</span><br><span class="line">    &#125;</span><br><span class="line">    div&#123;</span><br><span class="line">        font-family: 宋体;</span><br><span class="line">        font-size: x-large;</span><br><span class="line">        color: #0D3349;</span><br><span class="line">        text-align: center;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id="container"&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style="width: 250px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        background-color: #00AA88;"&gt;</span><br><span class="line">        爱我你怕了吗&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style=" width: 250px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        background-color: #00CCFF;"&gt;来啊,打我啊&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style="width: 250px;</span><br><span class="line">        height: 500px;</span><br><span class="line">        background-color: #ff6cf1;"&gt;大傻比&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style=" width: 250px;</span><br><span class="line">        height:80px;</span><br><span class="line">        background-color: #b2dba1;"&gt;大坏蛋&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style="width: 250px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: #f5cef4;"&gt;死基佬&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style=" width: 250px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        background-color: #00CCFF;"&gt;no can no BB&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style="width: 250px;</span><br><span class="line">        height: 500px;</span><br><span class="line">        background-color: #ff6cf1;"&gt;进逼&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img1" style="width: 250px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        background-color: #00AA88;"&gt;你行你上啊&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style=" width: 250px;</span><br><span class="line">        height:80px;</span><br><span class="line">        background-color: #b2dba1;"&gt;因垂死听&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style="width: 250px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: #f5cef4;"&gt;阿哈哈哈&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class="box"&gt;</span><br><span class="line">        &lt;div class="img" style="width: 250px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        background-color: #00AA88;"&gt;活活慌慌呼呼&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt; </span><br><span class="line">```    </span><br><span class="line">这里面主要是完成了整个页面基本元素的插入，效果就像刚开始的那一张图，图片之间会有</span><br><span class="line">大片空白。</span><br><span class="line"></span><br><span class="line">可以看到，这里的每一个.box都设置了属性：float:left;因而图片实际上已经脱离的文档流，</span><br><span class="line">它的位置是不固定的，如果你缩小窗口，图片的位置会随着窗口大小变化而变，因而接下来，</span><br><span class="line">我首先要使用js来将图片的位置固定住。</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">   function fixImg(parent,childName)&#123;   //使得每一行有固定个数图片,不随窗口大小而改变</span><br><span class="line">        var oParent=document.getElementById(parent);</span><br><span class="line">        var imgArr=getChildren(oParent,childName);</span><br><span class="line">//        console.log(imgArr);</span><br><span class="line">        var imgWidth=imgArr[0].offsetWidth;</span><br><span class="line">//        console.log(imgWidth);</span><br><span class="line">        var cols=Math.floor(document.documentElement.clientWidth/imgWidth); //计算图片列数</span><br><span class="line">//        console.log(cols);</span><br><span class="line">        //根据图片修改外层div为某固定宽度</span><br><span class="line">        oParent.style.cssText="width:"+cols*imgWidth+"px;margin:0 auto;";</span><br><span class="line"></span><br><span class="line">        //开始把图片按照瀑布流规则插入</span><br><span class="line">        var imgHeight=[];</span><br><span class="line">        for(var i=0;i&lt;imgArr.length;i++)&#123;</span><br><span class="line">            if(i&lt;cols)&#123;     //图片已经显示</span><br><span class="line">                imgHeight[i]=imgArr[i].offsetHeight;   //获得当前一行所有图片高度</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                var minHeight=Math.min.apply(null,imgHeight);  //找到最小高度</span><br><span class="line">                var minIndex=getLocation(imgHeight,minHeight);</span><br><span class="line">                imgArr[i].style.position='absolute';</span><br><span class="line">                imgArr[i].style.top=minHeight+'px';    //插入在最小高度图片下面</span><br><span class="line">                imgArr[i].style.left=imgArr[minIndex].offsetLeft+'px';</span><br><span class="line">                //插入图片的那部分高度改变</span><br><span class="line">                imgHeight[minIndex]=imgHeight[minIndex]+imgArr[i].offsetHeight;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，1-10行代码实现了固定图片的功能，主要原理就是修改了图片的的最外层div的宽度，<br>并使期居中对齐，而剩下的代码则是实现了 <strong>一次</strong> 插入图片的效果。<br>其中调用了外部定义的getChildren()和getlocation（）方法，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getChildren</span>(<span class="params">oParent,childName</span>)</span>&#123;   <span class="comment">//获得图片个数</span></span><br><span class="line">    <span class="keyword">var</span> imgArr=[];</span><br><span class="line">    <span class="keyword">var</span> content=oParent.getElementsByTagName(<span class="string">'*'</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;content.length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(content[i].className==childName)&#123;   <span class="comment">//找到指定类名对元素</span></span><br><span class="line">            imgArr.push(content[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> imgArr;   <span class="comment">//返回存放所有图片对数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">getLocation</span>(<span class="params">aparent,oMinHeight</span>)</span>&#123;  <span class="comment">//找到最小高度图片在数组对中对位置</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;aparent.length;i++)&#123;</span><br><span class="line"><span class="comment">//            console.log('imgHeight:'+aparent+' oMinHeight:'+oMinHeight);</span></span><br><span class="line">            <span class="keyword">if</span>(aparent[i]==oMinHeight)&#123;</span><br><span class="line"><span class="comment">//                console.log('i: '+i);</span></span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'not find'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>到这里，你已经能够实现图片插入<strong>一次</strong>的效果，也就是说，所有的图片会在一瞬间按照<br>瀑布流的规则全部插入，那么，接下来所要做的就是实现随着鼠标的向下滚动，图片分批插入。</p>
+<p>我们首先需要去监测鼠标滚动的距离，再据此设定一个图片加载的触发点，比如我这里就是设置为，<br>当最下面一张图片出现时，后面当图片开始加载：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> imgStyleHeight=[<span class="number">150</span>,<span class="number">300</span>,<span class="number">80</span>,<span class="number">200</span>,<span class="number">500</span>];</span><br><span class="line">        <span class="keyword">var</span> imgStyleColor=[<span class="string">'#00AA88'</span>,<span class="string">'#00CCFF'</span>,<span class="string">'#b2dba1'</span>,<span class="string">'#f5cef4'</span>,<span class="string">'#ff6cf1'</span>];</span><br><span class="line">        <span class="keyword">var</span> imgStyleHtml=[<span class="string">'you jump,i jump'</span>,<span class="string">'岁月静好,妙香暖心'</span>,<span class="string">'似乎很有趣'</span>,<span class="string">'外星生物入侵啦'</span>];</span><br><span class="line">        <span class="built_in">window</span>.onscroll=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    <span class="comment">//监测滚动条位置</span></span><br><span class="line">            <span class="keyword">var</span> oParent=<span class="built_in">document</span>.getElementById(<span class="string">'container'</span>);</span><br><span class="line">            <span class="keyword">if</span>(loadImg())&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;imgStyleHeight.length;i++)&#123;</span><br><span class="line">                    <span class="keyword">var</span> oDiv1=<span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">                    oDiv1.className=<span class="string">'box'</span>;</span><br><span class="line">                    oParent.appendChild(oDiv1);</span><br><span class="line">                    <span class="keyword">var</span> oDiv2=<span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">                    oDiv2.className=<span class="string">'img'</span>;</span><br><span class="line"><span class="comment">//                    oDiv2.className='appendClass';</span></span><br><span class="line">                    oDiv2.style.cssText=<span class="string">"width:250px;height:"</span>+imgStyleHeight[i]+<span class="string">"px;background-color:"</span>+imgStyleColor[i]+<span class="string">";"</span>;</span><br><span class="line">                    oDiv2.innerHTML=imgStyleHtml[i];</span><br><span class="line">                    oDiv1.appendChild(oDiv2);</span><br><span class="line">                &#125;</span><br><span class="line">                fixImg(<span class="string">'container'</span>,<span class="string">'box'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">loadImg</span> (<span class="params"></span>)</span>&#123;    <span class="comment">//滚动后图片的加载</span></span><br><span class="line">        <span class="keyword">var</span> oParent=<span class="built_in">document</span>.getElementById(<span class="string">'container'</span>);</span><br><span class="line">        <span class="keyword">var</span> aImg=getChildren(oParent,<span class="string">'box'</span>);    <span class="comment">//获得已经插入的图片</span></span><br><span class="line">        <span class="keyword">var</span> lastImgTop=aImg[aImg.length-<span class="number">1</span>].offsetTop;  <span class="comment">//最后一张距离上方的高度</span></span><br><span class="line">        <span class="keyword">var</span> scrollTop=<span class="built_in">document</span>.documentElement.scrollTop||<span class="built_in">document</span>.body.scrollTop;<span class="comment">//滚动高度</span></span><br><span class="line">        <span class="keyword">var</span> clientTop=<span class="built_in">document</span>.documentElement.clientHeight||<span class="built_in">document</span>.body.clientHeight;  <span class="comment">//当前窗口高度</span></span><br><span class="line"><span class="comment">//        console.log(lastImgTop+'&lt;'+scrollTop+'+'+clientTop);</span></span><br><span class="line">        <span class="keyword">if</span>(lastImgTop&lt;scrollTop+clientTop)&#123;      <span class="comment">//滚动到最后一张图片顶部时</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;      <span class="comment">//可以开始加载图片</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码实现了滚动监测，而其中出现当loadimg（）方法则是监测是否到达触发点可以加载,<br>而fixImg（）方法则是将需要插入当图片按照瀑布流规则去进行插入，至此，瀑布流效果基本实现。</p>
+<p>接下来贴出全部代码，你可以复制到txt文件，然后将其后缀名改为html，使用浏览器打开即可<br>看道效果。</p>
+<p>完整代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line">    &lt;!DOCTYPE html&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>瀑布流<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">    *<span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">padding</span>:<span class="value"><span class="number">0</span></span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">    <span class="class">.box</span><span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">5px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">    <span class="class">.img</span> <span class="rules">&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span></span><br><span class="line">    <span class="id">#container</span><span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">    <span class="class">.appendClass</span><span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">250px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">150px</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#f8e530</span></span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line">    <span class="tag">div</span><span class="rules">&#123;</span><br><span class="line">        <span class="rule"><span class="attribute">font-family</span>:<span class="value"> 宋体</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">font-size</span>:<span class="value"> x-large</span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#0D3349</span></span></span>;</span><br><span class="line">        <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">    &#125;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">"width: 250px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        background-color: #00AA88;"</span>&gt;</span></span><br><span class="line">        爱我你怕了吗<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">" width: 250px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        background-color: #00CCFF;"</span>&gt;</span>来啊,打我啊<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">"width: 250px;</span><br><span class="line">        height: 500px;</span><br><span class="line">        background-color: #ff6cf1;"</span>&gt;</span>大傻比<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">" width: 250px;</span><br><span class="line">        height:80px;</span><br><span class="line">        background-color: #b2dba1;"</span>&gt;</span>大坏蛋<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">"width: 250px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: #f5cef4;"</span>&gt;</span>死基佬<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">" width: 250px;</span><br><span class="line">        height: 300px;</span><br><span class="line">        background-color: #00CCFF;"</span>&gt;</span>no can no BB<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">"width: 250px;</span><br><span class="line">        height: 500px;</span><br><span class="line">        background-color: #ff6cf1;"</span>&gt;</span>进逼<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img1"</span> <span class="attribute">style</span>=<span class="value">"width: 250px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        background-color: #00AA88;"</span>&gt;</span>你行你上啊<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">" width: 250px;</span><br><span class="line">        height:80px;</span><br><span class="line">        background-color: #b2dba1;"</span>&gt;</span>因垂死听<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">"width: 250px;</span><br><span class="line">        height: 200px;</span><br><span class="line">        background-color: #f5cef4;"</span>&gt;</span>阿哈哈哈<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"img"</span> <span class="attribute">style</span>=<span class="value">"width: 250px;</span><br><span class="line">        height: 150px;</span><br><span class="line">        background-color: #00AA88;"</span>&gt;</span>活活慌慌呼呼<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        fixImg(<span class="string">'container'</span>,<span class="string">'box'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> imgStyleHeight=[<span class="number">150</span>,<span class="number">300</span>,<span class="number">80</span>,<span class="number">200</span>,<span class="number">500</span>];</span><br><span class="line">        <span class="keyword">var</span> imgStyleColor=[<span class="string">'#00AA88'</span>,<span class="string">'#00CCFF'</span>,<span class="string">'#b2dba1'</span>,<span class="string">'#f5cef4'</span>,<span class="string">'#ff6cf1'</span>];</span><br><span class="line">        <span class="keyword">var</span> imgStyleHtml=[<span class="string">'you jump,i jump'</span>,<span class="string">'岁月静好,妙香暖心'</span>,<span class="string">'似乎很有趣'</span>,<span class="string">'外星生物入侵啦'</span>];</span><br><span class="line">        <span class="built_in">window</span>.onscroll=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;    <span class="comment">//监测滚动条位置</span></span><br><span class="line">            <span class="keyword">var</span> oParent=<span class="built_in">document</span>.getElementById(<span class="string">'container'</span>);</span><br><span class="line">            <span class="keyword">if</span>(loadImg())&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;imgStyleHeight.length;i++)&#123;</span><br><span class="line">                    <span class="keyword">var</span> oDiv1=<span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">                    oDiv1.className=<span class="string">'box'</span>;</span><br><span class="line">                    oParent.appendChild(oDiv1);</span><br><span class="line">                    <span class="keyword">var</span> oDiv2=<span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line">                    oDiv2.className=<span class="string">'img'</span>;</span><br><span class="line"><span class="comment">//                    oDiv2.className='appendClass';</span></span><br><span class="line">                    oDiv2.style.cssText=<span class="string">"width:250px;height:"</span>+imgStyleHeight[i]+<span class="string">"px;background-color:"</span>+imgStyleColor[i]+<span class="string">";"</span>;</span><br><span class="line">                    oDiv2.innerHTML=imgStyleHtml[i];</span><br><span class="line">                    oDiv1.appendChild(oDiv2);</span><br><span class="line">                &#125;</span><br><span class="line">                fixImg(<span class="string">'container'</span>,<span class="string">'box'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">loadImg</span> (<span class="params"></span>)</span>&#123;    <span class="comment">//滚动后图片的加载</span></span><br><span class="line">        <span class="keyword">var</span> oParent=<span class="built_in">document</span>.getElementById(<span class="string">'container'</span>);</span><br><span class="line">        <span class="keyword">var</span> aImg=getChildren(oParent,<span class="string">'box'</span>);    <span class="comment">//获得已经插入的图片</span></span><br><span class="line">        <span class="keyword">var</span> lastImgTop=aImg[aImg.length-<span class="number">1</span>].offsetTop;  <span class="comment">//最后一张距离上方的高度</span></span><br><span class="line">        <span class="keyword">var</span> scrollTop=<span class="built_in">document</span>.documentElement.scrollTop||<span class="built_in">document</span>.body.scrollTop;<span class="comment">//滚动高度</span></span><br><span class="line">        <span class="keyword">var</span> clientTop=<span class="built_in">document</span>.documentElement.clientHeight||<span class="built_in">document</span>.body.clientHeight;  <span class="comment">//当前窗口高度</span></span><br><span class="line"><span class="comment">//        console.log(lastImgTop+'&lt;'+scrollTop+'+'+clientTop);</span></span><br><span class="line">        <span class="keyword">if</span>(lastImgTop&lt;scrollTop+clientTop)&#123;      <span class="comment">//滚动到最后一张图片顶部时</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;      <span class="comment">//可以开始加载图片</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fixImg</span>(<span class="params">parent,childName</span>)</span>&#123;   <span class="comment">//使得每一行有固定个数图片,不随窗口大小而改变</span></span><br><span class="line">        <span class="keyword">var</span> oParent=<span class="built_in">document</span>.getElementById(parent);</span><br><span class="line">        <span class="keyword">var</span> imgArr=getChildren(oParent,childName);</span><br><span class="line"><span class="comment">//        console.log(imgArr);</span></span><br><span class="line">        <span class="keyword">var</span> imgWidth=imgArr[<span class="number">0</span>].offsetWidth;</span><br><span class="line"><span class="comment">//        console.log(imgWidth);</span></span><br><span class="line">        <span class="keyword">var</span> cols=<span class="built_in">Math</span>.floor(<span class="built_in">document</span>.documentElement.clientWidth/imgWidth); <span class="comment">//计算图片列数</span></span><br><span class="line"><span class="comment">//        console.log(cols);</span></span><br><span class="line">        <span class="comment">//根据图片修改外层div为某固定宽度</span></span><br><span class="line">        oParent.style.cssText=<span class="string">"width:"</span>+cols*imgWidth+<span class="string">"px;margin:0 auto;"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//开始把图片按照瀑布流规则插入</span></span><br><span class="line">        <span class="keyword">var</span> imgHeight=[];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;imgArr.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i&lt;cols)&#123;     <span class="comment">//图片已经显示</span></span><br><span class="line">                imgHeight[i]=imgArr[i].offsetHeight;   <span class="comment">//获得当前一行所有图片高度</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> minHeight=<span class="built_in">Math</span>.min.apply(<span class="literal">null</span>,imgHeight);  <span class="comment">//找到最小高度</span></span><br><span class="line">                <span class="keyword">var</span> minIndex=getLocation(imgHeight,minHeight);</span><br><span class="line">                imgArr[i].style.position=<span class="string">'absolute'</span>;</span><br><span class="line">                imgArr[i].style.top=minHeight+<span class="string">'px'</span>;    <span class="comment">//插入在最小高度图片下面</span></span><br><span class="line">                imgArr[i].style.left=imgArr[minIndex].offsetLeft+<span class="string">'px'</span>;</span><br><span class="line">                <span class="comment">//插入图片的那部分高度改变</span></span><br><span class="line">                imgHeight[minIndex]=imgHeight[minIndex]+imgArr[i].offsetHeight;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getChildren</span>(<span class="params">oParent,childName</span>)</span>&#123;   <span class="comment">//获得图片个数</span></span><br><span class="line">        <span class="keyword">var</span> imgArr=[];</span><br><span class="line">        <span class="keyword">var</span> content=oParent.getElementsByTagName(<span class="string">'*'</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;content.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(content[i].className==childName)&#123;   <span class="comment">//找到指定类名对元素</span></span><br><span class="line">                imgArr.push(content[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> imgArr;   <span class="comment">//返回存放所有图片对数组</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getLocation</span>(<span class="params">aparent,oMinHeight</span>)</span>&#123;  <span class="comment">//找到最小高度图片在数组对中对位置</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;aparent.length;i++)&#123;</span><br><span class="line"><span class="comment">//            console.log('imgHeight:'+aparent+' oMinHeight:'+oMinHeight);</span></span><br><span class="line">            <span class="keyword">if</span>(aparent[i]==oMinHeight)&#123;</span><br><span class="line"><span class="comment">//                console.log('i: '+i);</span></span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'not find'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>完成这么一个效果的过程中也确实暴露出了一些问题：<br>比如：像这样的json是没有length属性的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> json2=&#123;<span class="string">"name"</span>:<span class="string">"txt1"</span>,<span class="string">"name2"</span>:<span class="string">"txt2"</span>&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>想要遍历只能这样：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> js2 <span class="keyword">in</span> json2)&#123;</span><br><span class="line">        alert( js2+<span class="string">"="</span>+json2[js2]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过后来改用数组了。<br>还有一些因为手误而造成的bug也浪费不少时间。</p>
+<h5 id="不过能看到最后效果顺利实现还是很开心的。O-∩-∩-O"><a href="#不过能看到最后效果顺利实现还是很开心的。O-∩-∩-O" class="headerlink" title="不过能看到最后效果顺利实现还是很开心的。O(∩_∩)O"></a>不过能看到最后效果顺利实现还是很开心的。O(∩_∩)O</h5><h5 id="如果你有什么意见或者建议，欢迎在下方留言，我会及时回复。"><a href="#如果你有什么意见或者建议，欢迎在下方留言，我会及时回复。" class="headerlink" title="如果你有什么意见或者建议，欢迎在下方留言，我会及时回复。"></a>如果你有什么意见或者建议，欢迎在下方留言，我会及时回复。</h5>
+    </section>
+  
+  
+
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/02/19/使用原生js实现瀑布流效果/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"yzxzsp11"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016 XuHang | powered by<a href="https://hexo.io/">Hexo</a> |theme by <a href="https://github.com/someus/huno">Huno</a></span> 
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
