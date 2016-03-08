@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      杭电助手宋城任务总结 | XuHang 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="july hang">
+    
+    
+
+    <meta name="description" content="背景本次任务主要为活动报名抽奖页面的实现，由于是第一次写移动端的web页面，所以在对于手机屏幕的适配(特别是安卓设备)的适配上花费了较多精力。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="杭电助手宋城任务总结 | XuHang">
+<meta property="og:url" content="http://yoursite.com/2016/03/08/宋城任务总结/index.html">
+<meta property="og:site_name" content="XuHang">
+<meta property="og:description" content="背景本次任务主要为活动报名抽奖页面的实现，由于是第一次写移动端的web页面，所以在对于手机屏幕的适配(特别是安卓设备)的适配上花费了较多精力。">
+<meta property="og:updated_time" content="2016-03-08T02:40:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="杭电助手宋城任务总结 | XuHang">
+<meta name="twitter:description" content="背景本次任务主要为活动报名抽奖页面的实现，由于是第一次写移动端的web页面，所以在对于手机屏幕的适配(特别是安卓设备)的适配上花费了较多精力。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css" type="text/css">
+    <link rel="stylesheet" href="/css/highlight.css" type="text/css">
+    <link rel="stylesheet" href="/css/archive.css" type="text/css">
+    <link rel="stylesheet" href="/css/china-social-icon.css" type="text/css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">XuHang</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          岁月静好，妙香暖心。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/yzxzsp11" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon icon-social-facebook'></i>
+         <span class="label">Facebook</span>
+       </a>
+     </li>
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon cs-icon-douban'></i>
+         <span class="label">Douban</span>
+       </a>
+     </li>
+     
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon icon-social-twitter'></i>
+         <span class="label">Twitter</span>
+       </a>
+     </li>
+
+
+  </ul>
+</nav>
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">杭电助手宋城任务总结</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-03-08" class="post-meta__date date">2016-03-08</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/project-summary/">project summary</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>本次任务主要为活动报名抽奖页面的实现，由于是第一次写移动端的web页面，所以在对于手机屏幕的适配(特别是安卓设备)的适配上花费了较多精力。<br><a id="more"></a></p>
+<h3 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h3><ol>
+<li>1.字体随着屏幕大小而改变</li>
+<li>2.对于不同屏幕大小进行元素定位</li>
+<li>3.禁止用户对屏幕进行缩放</li>
+<li>4.个性字体的引入</li>
+<li>5.背景图的自适应</li>
+</ol>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h5 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h5><p>对于第一个文问题，主要采用了媒体查询的方法，也就是自动查询设备的宽度，然后动态的改变字体的像素大小。代码如下: </p>
+<pre><code>/*iphone4*/
+    @media screen and (max-width:360px){body{font-size:19px}}
+    /*iphone5、6*/
+    @media screen and (min-width:360px){body{font-size:22px}}
+    /*iphone6p*/
+    @media screen and (min-width:400px){body{font-size:25px}}
+    @media screen and (min-width:480px){body{font-size:29px}}
+    @media screen and (min-width:560px){body{font-size:30px}}
+    @media screen and (min-width:600px){body{font-size:31px}}
+    @media screen and (min-width:640px){body{font-size:33px}}
+    @media screen and (min-width:750px){body{font-size:35px}}
+    @media screen and (min-width:850px){body{font-size:35px}}
+</code></pre><h5 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h5><p>对于这个问题，主要是使用了百分比定位的方法，将内容区域div的positon设置为absolute后使用百分比来设置margin等属性，代码如下: </p>
+<pre><code>#content {
+        padding-left: 20px;
+        background: url(&quot;img/bg2.JPG&quot;);
+        position: absolute;
+        border-radius:4px;
+        box-shadow:1px 1px 2px #000;
+        margin-top: 40%;
+        margin-left: 8%;
+        padding-top: 10%;
+        padding-bottom: 20%;
+        width: 80%;
+    }
+</code></pre><p>这得好处就是内容位置会随着屏幕大小的改变而改变，是的不同屏幕上效果类似。</p>
+<h5 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h5><p>这个问题有通用的解决方法，只需要在开头加上如下代码：</p>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;/&gt;
+</code></pre><p> 简单解释一下含义: </p>
+<ol>
+<li>viewport:可以理解为你看到的窗口的一些设置</li>
+<li>width=device-width：也就是说viewport的宽度设置为设备宽度（当然也可以设置为一个固定值）</li>
+<li>initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0：这三句规定了初始缩放比例，最小和最大缩放比例</li>
+<li><p>user-scalable:这句用来禁止或者允许用户进行缩放</p>
+<p>总的来说，这句的功能就是窗口宽为手机移动设备默认宽度，初始缩放比例为1.0，最大缩放比例为原始像素大小，也就是禁止缩放。</p>
+</li>
+</ol>
+<h5 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h5><p>想要引入个性字体，首先要下载字体文件，然后使用如下代码: </p>
+<pre><code>@font-face{
+        font-family:&apos;font2&apos;;
+        src:url(&quot;font/font2.TTF&quot;);
+        font-style:normal;
+        font-weight:normal;
+    }
+</code></pre><p>这样即可引入你所需的个性字体（如果字体文件是中文的话，建议改成英文，避免不必要的麻烦），随后即可正常使用，就想这样:<br>     html,body{<br>            width: 100%;<br>            color: black;<br>            font-family:”font2”;<br>        }</p>
+<h5 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h5><p>我们需要插入一张背景图，然后能够使得其大小随着屏幕变化而变化，也就是自适应，主要要采用了以下代码: </p>
+<pre><code>#web_bg{
+       position:absolute;
+       width:100%;
+       height:100%;
+       z-index:-2;
+   }
+  #web_bg img{
+       position:fixed;
+       height:100% ;
+       width:100%;
+   }
+
+   &lt;div id=&quot;web_bg&quot;&gt;
+       &lt;img src=&quot;img/bg1.JPG&quot; /&gt;
+   &lt;/div&gt;
+</code></pre><p>其原理主要还是让图片fixed然后width:100；height:100%;<br>当然，使用css3也可以实现。</p>
+<h5 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h5><p>本次任务页面不算复杂，但是在元素定位以及屏幕适配上的确费了不少功夫，果然是“台上一分钟，台下十年功”。</p>
+
+    </section>
+  
+  
+
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/03/08/宋城任务总结/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"yzxzsp11"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016 XuHang | powered by<a href="https://hexo.io/">Hexo</a> |theme by <a href="https://github.com/someus/huno">Huno</a></span> 
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
