@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      百度前端学院任务阶段总结1 | XuHang 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="july hang">
+    
+    
+
+    <meta name="description" content="题外话最近百度前端学院的春季班又开始了，感觉自己前端基础还不够牢固，于是尝试着报了名，从第一个任务开始，打算重新夯实一下基础。
+虽然这些任务只是一些没有js的页面，但其中也发现了不少没遇到过的css样式，或者说是一些技巧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度前端学院任务阶段总结1 | XuHang">
+<meta property="og:url" content="http://yoursite.com/2016/04/05/百度前端学院任务阶段总结1/index.html">
+<meta property="og:site_name" content="XuHang">
+<meta property="og:description" content="题外话最近百度前端学院的春季班又开始了，感觉自己前端基础还不够牢固，于是尝试着报了名，从第一个任务开始，打算重新夯实一下基础。
+虽然这些任务只是一些没有js的页面，但其中也发现了不少没遇到过的css样式，或者说是一些技巧。">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/ife%E6%80%BB%E7%BB%931.png">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/ife%E6%80%BB%E7%BB%932.png">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/ife%E6%80%BB%E7%BB%933.png">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/ife%E6%80%BB%E7%BB%93img.png">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/ifeimg1.png">
+<meta property="og:updated_time" content="2016-04-06T03:16:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="百度前端学院任务阶段总结1 | XuHang">
+<meta name="twitter:description" content="题外话最近百度前端学院的春季班又开始了，感觉自己前端基础还不够牢固，于是尝试着报了名，从第一个任务开始，打算重新夯实一下基础。
+虽然这些任务只是一些没有js的页面，但其中也发现了不少没遇到过的css样式，或者说是一些技巧。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css" type="text/css">
+    <link rel="stylesheet" href="/css/highlight.css" type="text/css">
+    <link rel="stylesheet" href="/css/archive.css" type="text/css">
+    <link rel="stylesheet" href="/css/china-social-icon.css" type="text/css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">XuHang</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          岁月静好，妙香暖心。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/yzxzsp11" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon icon-social-facebook'></i>
+         <span class="label">Facebook</span>
+       </a>
+     </li>
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon cs-icon-douban'></i>
+         <span class="label">Douban</span>
+       </a>
+     </li>
+     
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon icon-social-twitter'></i>
+         <span class="label">Twitter</span>
+       </a>
+     </li>
+
+
+  </ul>
+</nav>
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">百度前端学院任务阶段总结1</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-04-05" class="post-meta__date date">2016-04-05</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/ife-summary/">ife summary</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>最近百度前端学院的春季班又开始了，感觉自己前端基础还不够牢固，于是尝试着报了名，从第一个任务开始，打算重新夯实一下基础。</p>
+<p>虽然这些任务只是一些没有js的页面，但其中也发现了不少没遇到过的css样式，或者说是一些技巧。<br><a id="more"></a> </p>
+<h5 id="首先是transition这个css3的属性。"><a href="#首先是transition这个css3的属性。" class="headerlink" title="首先是transition这个css3的属性。"></a>首先是transition这个css3的属性。</h5><p>这个属性主要是起到一个过渡效果，实现了一些以前需要js才能实现的效果。    </p>
+<pre><code>.mask button{
+       margin-top: 50px;
+       border-radius: 5px;
+       border-style:none;
+       color: #fff;
+       outline: none;
+       width: 320px;
+       height: 70px;
+       font-size: 21px;
+       background-color: red;
+       transition: all ease-out 1s;
+       cursor: pointer;
+   }
+   .mask button:hover{
+       opacity: 0.5;
+       filter:alpha(opacity:50);
+  }
+</code></pre><p> 以上这段代码就实现了鼠标悬浮于按钮上时，按钮透明度由1缓慢（ease-out方式）变化为0.5的效果。<br> 关于这个属性，想要了解更多可以看 <a href="http://www.w3cplus.com/content/css3-transition" target="_blank" rel="external">这里</a></p>
+<h5 id="使用focus实现如下选择框切换"><a href="#使用focus实现如下选择框切换" class="headerlink" title="使用focus实现如下选择框切换"></a>使用focus实现如下选择框切换</h5><p>  <img src="http://7xr10n.com1.z0.glb.clouddn.com/ife%E6%80%BB%E7%BB%931.png" alt="pic"></p>
+<p>  主要代码如下：</p>
+<pre><code>&lt;form&gt;
+          &lt;div class=&quot;selectArea flexBox&quot;&gt;
+              &lt;div class=&quot;selectBox&quot; tabindex=&quot;0&quot;&gt;
+                  &lt;div class=&quot;select&quot; selected=&quot;中国&quot; &gt;&lt;/div&gt;
+                  &lt;ul class=&quot;option&quot;&gt;
+                      &lt;li&gt;中国&lt;/li&gt;
+                      &lt;li&gt;其他&lt;/li&gt;
+                  &lt;/ul&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;selectBox&quot; tabindex=&quot;0&quot;&gt;
+                  &lt;div class=&quot;select&quot; selected=&quot;省份&quot; &gt;&lt;/div&gt;
+                  &lt;ul class=&quot;option&quot;&gt;
+                      &lt;li&gt;江苏省&lt;/li&gt;
+                      &lt;li&gt;浙江省&lt;/li&gt;
+                      &lt;li&gt;上海市&lt;/li&gt;
+                      &lt;li&gt;北京市&lt;/li&gt;
+                  &lt;/ul&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;selectBox&quot; tabindex=&quot;0&quot;&gt;
+                  &lt;div class=&quot;select&quot; selected=&quot;城市&quot; &gt;&lt;/div&gt;
+                  &lt;ul class=&quot;option&quot;&gt;
+                      &lt;li&gt;南京&lt;/li&gt;
+                      &lt;li&gt;杭州&lt;/li&gt;
+                      &lt;li&gt;浦东&lt;/li&gt;
+                  &lt;/ul&gt;
+              &lt;/div&gt;
+              &lt;button class=&quot;button&quot;&gt;搜索&lt;/button&gt;
+          &lt;/div&gt;
+      &lt;/form&gt;
+
+.section3 .selectBox{
+      outline: none;
+      position: relative;
+      height: 41px;
+  }
+  .section3 .selectBox:focus&gt;.select{
+      border: 2px solid #c00 ;
+  }
+  .section3 .selectBox:focus &gt; .option{
+      position: absolute;
+      display: block;
+      background-color: #dadada;
+      width: 200px;
+      left: 30px;
+      border-style: none solid solid solid;
+      border-color: #c00;
+      border-width: 2px;
+   }
+   .section3 .selectBox:focus &gt; .option li{
+      font-size: 13px;
+      padding:20px 20px 10px 20px;
+  }
+  .option li:hover{
+      background-color: #de0000;
+      cursor: pointer;
+      color:white;
+      transition: background-color ease-out 1.5s;
+  }
+  .selectBox&gt; .option{
+      position: absolute;
+       display: none;
+   }
+</code></pre><p>这里只需要预先设置.option不显示，然后通过focus来使其显示即可达到类似选项卡的效果。</p>
+<h5 id="使用transform实现图片缩放效果"><a href="#使用transform实现图片缩放效果" class="headerlink" title="使用transform实现图片缩放效果"></a>使用transform实现图片缩放效果</h5><p> <img src="http://7xr10n.com1.z0.glb.clouddn.com/ife%E6%80%BB%E7%BB%932.png" alt="pic"></p>
+<p>如上图，当鼠标悬浮于图片上时，图片会自动放大。代码也不复杂：</p>
+<pre><code>.section4 .img1 img{
+        transition:all ease-out 1s;
+    }
+    .section4 .img1 img:hover{
+        transform: scale(1.5);
+    }
+</code></pre><p>主要讲transition和transform属性结合，即可实现这样的效果。<br>具体更多关于transform，可以看<a href="http://www.w3cplus.com/html5/svg-transformations.html" target="_blank" rel="external">这里</a></p>
+<h5 id="css实现小三角形状效果"><a href="#css实现小三角形状效果" class="headerlink" title="css实现小三角形状效果"></a>css实现小三角形状效果</h5><p>效果如下：<br><img src="http://7xr10n.com1.z0.glb.clouddn.com/ife%E6%80%BB%E7%BB%933.png" alt="pic"></p>
+<p>先来看看实现的代码：</p>
+<pre><code>.imgLeft:after{
+        position: absolute;
+        content: &apos;&apos;;
+        width: 0;
+        height: 0;
+        border-width: 40px 40px 40px 0;
+        border-style: solid;
+        border-color:   transparent #ffffff transparent  transparent;
+        right: 0;
+        top: 50%;
+        margin-top: -40px;
+    }
+</code></pre><p>一开始我也是摸不着头脑，后来将该元素width和height调制较大后才理解来原理，如下：<br><img src="http://7xr10n.com1.z0.glb.clouddn.com/ife%E6%80%BB%E7%BB%93img.png" alt="pic"></p>
+<p>将元素高宽变为0，尖头那个方向不设边框，其他设置较宽边框，尖头反方向边框设置颜色，其为透明，即可形成该效果。</p>
+<h5 id="线条的伸缩效果。"><a href="#线条的伸缩效果。" class="headerlink" title="线条的伸缩效果。"></a>线条的伸缩效果。</h5><p><img src="http://7xr10n.com1.z0.glb.clouddn.com/ifeimg1.png" alt="pic"></p>
+<p>当鼠标悬浮时，右边线条会有中间向两边伸长。<br>代码如下：</p>
+<pre><code>.section6 .mid .title:after{
+        content: &apos;&apos;;
+        width: 40px;
+        margin-left: -20px;
+        border: 2px solid #555555;
+        position: absolute;
+        top:250px;
+        left: 215px;
+        transition: all ease-out 1.2s;
+    }
+    .section6 .mid:hover&gt; .title:after{
+        margin-left: -50px;
+        width: 100px;
+    }
+</code></pre><p>这里要注意的是，必须要添加margin-left，否则无法实现由中间向两边延展的效果。</p>
+<h5 id="flex伸缩盒布局"><a href="#flex伸缩盒布局" class="headerlink" title="flex伸缩盒布局"></a>flex伸缩盒布局</h5><p>这个布局可以实现页面的简单自适应效果，具体可以看<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="external">阮一峰的博客</a></p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>总的来说，虽然是一些比较基础的页面，但是还是发现了自己在基础方面的不足，同时在ife这个平台上能够看到其他小伙伴的代码，也有利于自己更加深入的思考，继续加油！</p>
+
+    </section>
+  
+  
+
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/04/05/百度前端学院任务阶段总结1/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"yzxzsp11"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016 XuHang | powered by<a href="https://hexo.io/">Hexo</a> |theme by <a href="https://github.com/someus/huno">Huno</a></span> 
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
