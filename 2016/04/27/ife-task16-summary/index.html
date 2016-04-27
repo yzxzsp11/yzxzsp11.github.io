@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      ife ife javascript task16 总结 | XuHang 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="july hang">
+    
+    
+
+    <meta name="description" content="ife javascript task16 总结具体任务详情可以点击这里
+本次任务主要是实现了读取用户的输入数据自动创建表格并且可以删除的功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ife ife javascript task16 总结 | XuHang">
+<meta property="og:url" content="http://yoursite.com/2016/04/27/ife-task16-summary/index.html">
+<meta property="og:site_name" content="XuHang">
+<meta property="og:description" content="ife javascript task16 总结具体任务详情可以点击这里
+本次任务主要是实现了读取用户的输入数据自动创建表格并且可以删除的功能。">
+<meta property="og:image" content="http://7xr10n.com1.z0.glb.clouddn.com/task16-1.png">
+<meta property="og:updated_time" content="2016-04-27T11:52:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ife ife javascript task16 总结 | XuHang">
+<meta name="twitter:description" content="ife javascript task16 总结具体任务详情可以点击这里
+本次任务主要是实现了读取用户的输入数据自动创建表格并且可以删除的功能。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css" type="text/css">
+    <link rel="stylesheet" href="/css/highlight.css" type="text/css">
+    <link rel="stylesheet" href="/css/archive.css" type="text/css">
+    <link rel="stylesheet" href="/css/china-social-icon.css" type="text/css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">XuHang</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          岁月静好，妙香暖心。
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/yzxzsp11" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon icon-social-facebook'></i>
+         <span class="label">Facebook</span>
+       </a>
+     </li>
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon cs-icon-douban'></i>
+         <span class="label">Douban</span>
+       </a>
+     </li>
+     
+     <li class="navigation__item">
+       <a href="" title="">
+         <i class='icon icon-social-twitter'></i>
+         <span class="label">Twitter</span>
+       </a>
+     </li>
+
+
+  </ul>
+</nav>
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">ife ife javascript task16 总结</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-04-27" class="post-meta__date date">2016-04-27</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/javascript/">javascript</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="ife-javascript-task16-总结"><a href="#ife-javascript-task16-总结" class="headerlink" title="ife javascript task16 总结"></a>ife javascript task16 总结</h3><p>具体任务详情可以点击<a href="http://ife.baidu.com/task/detail?taskId=16" target="_blank" rel="external">这里</a></p>
+<p>本次任务主要是实现了读取用户的输入数据自动创建表格并且可以删除的功能。</p>
+<a id="more"></a> 
+<p><img src="http://7xr10n.com1.z0.glb.clouddn.com/task16-1.png" alt="pic1"></p>
+<h3 id="实现逻辑："><a href="#实现逻辑：" class="headerlink" title="实现逻辑："></a>实现逻辑：</h3><p>首先需要将输入的数据读出，然后存放在一个容器里，然后生成表格，将数据写入。删除行时，需要锁定这一行，然后删除容器里对应的数据，再重新根据容器里的数据生成新的表格。</p>
+<p>###实现要点</p>
+<h4 id="1-数据的传递"><a href="#1-数据的传递" class="headerlink" title="1.数据的传递"></a>1.数据的传递</h4><p>这里我们将输入的数据用json进行存储，就像这样aqiData’＝{‘beijng’:’12’,’shanghai’:’120’},只需要将名称和数值对应存入即可。代码如下：</p>
+<pre><code>function addAqiData() {
+    //正则匹配城市名称(中英文字符)
+    var regCity = /^[a-zA-Z\u4E00-\u9FA5]+$/ ;
+    //正则匹配空气质量（整数）
+    var regValue = /[\d*]/;
+
+    var cityName=$(&apos;aqi-city-input&apos;).value.trim();
+    if(!cityName.match(regCity)){
+        alert(&apos;cityName input error!&apos;);
+        return false;
+    }
+    var airValue=$(&apos;aqi-value-input&apos;).value.trim();
+    if(!airValue.match(regValue)){
+        alert(&apos;value input error!&apos;);
+        return false;
+    }
+    aqiData[cityName]=airValue;
+    console.log(aqiData);
+}
+</code></pre><h3 id="2-表格的生成"><a href="#2-表格的生成" class="headerlink" title="2.表格的生成"></a>2.表格的生成</h3><p>这个的话，使用createElement方法很容易做到，我们的逻辑是遍历json数组，然后每读出一组数据就生成一行表格。<br>代码如下：</p>
+<pre><code>function renderAqiList() {
+    var trHead=&apos;&lt;tr&gt;&lt;td&gt;城市&lt;/td&gt;&lt;td&gt;空气质量&lt;/td&gt;&lt;td&gt;操作&lt;/td&gt;&lt;/tr&gt;&apos;;
+    $(&apos;aqi-table&apos;).innerHTML=trHead;
+    for (var city in aqiData) {
+        var tr = document.createElement(&apos;tr&apos;);
+        var td1 = document.createElement(&apos;td&apos;);
+        td1.innerHTML =city;
+        tr.appendChild(td1);
+        var td2=document.createElement(&apos;td&apos;);
+        td2.innerHTML=aqiData[city];
+        tr.appendChild(td2);
+        var td3=document.createElement(&apos;td&apos;);
+        td3.innerHTML=&quot;&lt;button class=&apos;del-btn&apos;&gt;delete&lt;/button&gt;&quot;;
+        tr.appendChild(td3);
+        $(&apos;aqi-table&apos;).appendChild(tr);
+    }
+}
+</code></pre><h3 id="3-删除操作"><a href="#3-删除操作" class="headerlink" title="3.删除操作"></a>3.删除操作</h3><p>这里需要通过target.nodeName来锁定点击的对象，再通过parentnElement向上锁定到tr节点，再更具其内容删除json中的数据即可。</p>
+<pre><code> function delBtnHandle(target) {
+    // do sth.
+    var tr=target.parentElement.parentElement;
+    var city=tr.children[0].innerHTML;
+    delete  aqiData[city];
+    renderAqiList();
+}
+</code></pre><h3 id="4-回车键"><a href="#4-回车键" class="headerlink" title="4.回车键"></a>4.回车键</h3><p>当聚焦在第一个输入框时，按下回车焦点移至第二个输入框，当焦点在第二个输入框时，按下回车，生成表格。</p>
+<pre><code>$(&apos;aqi-city-input&apos;).onkeyup=function(ev){
+        if(ev.keyCode==13){
+            $(&apos;aqi-value-input&apos;).focus();
+        }
+    };
+    $(&apos;aqi-value-input&apos;).onkeyup=function(ev){
+        if(ev.keyCode==13){
+            addBtnHandle();
+        }
+    };
+</code></pre><h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><p><a href="https://github.com/yzxzsp11/ife-task-code/blob/master/task16.html" target="_blank" rel="external">点击这里</a></p>
+
+    </section>
+  
+  
+
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/04/27/ife-task16-summary/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"yzxzsp11"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016 XuHang | powered by<a href="https://hexo.io/">Hexo</a> |theme by <a href="https://github.com/someus/huno">Huno</a></span> 
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
